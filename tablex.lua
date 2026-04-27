@@ -367,6 +367,21 @@ function tablex.dedupe(t)
 end
 
 --(might already exist depending on environment)
+if not tablex.new then
+	local imported
+	--pull in from luajit if possible
+	imported, tablex.new = pcall(require, 'table.new')
+	if not imported then
+		--this has worse performance characteristics than
+		--the luajit table.new, but is included as a polyfill
+		--for other environments
+		function tablex.new()
+			return {}
+		end
+	end
+end
+
+--(might already exist depending on environment)
 if not tablex.clear then
 	local imported
 	--pull in from luajit if possible
