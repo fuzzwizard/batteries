@@ -1,3 +1,7 @@
+### NOTE: Experimental
+
+This fork of batteries is experimental in nature and may include code that's untested or otherwise baffling. I recommend using [the upstream batteries](https://github.com/1bardesign/batteries) unless you're really itching for some confusion. -fuzzwizard
+
 # ⚡ Batteries for Lua
 
 > Helpful stuff for making games with lua, especially with [löve](https://love2d.org).
