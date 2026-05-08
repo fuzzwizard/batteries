@@ -1,6 +1,6 @@
 ### NOTE: Experimental
 
-This fork of batteries is experimental in nature and may include code that's untested or otherwise baffling. I recommend using [the upstream batteries](https://github.com/1bardesign/batteries) unless you're really itching for some confusion. -fuzzwizard
+This fork of batteries is opinionated and experimental and may include code that's untested or otherwise baffling. I recommend using [the upstream batteries](https://github.com/1bardesign/batteries) unless you're really itching to develop against a moving target. 
 
 # ⚡ Batteries for Lua
 
