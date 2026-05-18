@@ -301,4 +301,12 @@ function stringx.title_case(s)
     return s
 end
 
+function stringx.rpad(s, len, ch)
+	ch = ch or ' '
+	local d = len - #s
+	local padding = string.rep(ch, d)
+	s = s .. padding
+	return s
+end
+
 return stringx
