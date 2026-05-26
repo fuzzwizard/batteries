@@ -407,13 +407,13 @@ function intersect.aabb_circle_collide(a_pos, a_hs, b_pos, b_rad, into)
 	--
 	local result
 	if like_aabb then
-		local pretend_hs = vec2:pooled(0, 0)
+		local pretend_hs = vec2:pooled(b_rad, b_rad)
 		result = intersect.aabb_aabb_collide(a_pos, a_hs, b_pos, pretend_hs, into)
 		pretend_hs:release()
 	else
 		--outside aabb-like bounds so we need to collide with the nearest clamped corner point
 		local clamped = intersect.aabb_point_clamp(a_pos, a_hs, b_pos, vec2:pooled())
-		result = intersect.circle_circle_collide(clamped, 0, b_pos, b_rad, into)
+		result = intersect.point_circle_collide(clamped, b_pos, b_rad, into)
 		clamped:release()
 	end
 	return result
