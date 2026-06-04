@@ -375,7 +375,7 @@ if not tablex.new then
 		--this has worse performance characteristics than
 		--the luajit table.new, but is included as a polyfill
 		--for other environments
-		function tablex.new()
+		function tablex.new(narray, nhash)
 			return {}
 		end
 	end

@@ -5,12 +5,14 @@
 
 	todo: automatically use the pool by replacing __call, so you really just need to :release()
 ]]
+local path = (...):gsub("make_pooled", "")
+local table = require(path .. "tablex") --shadow global table module
 
 return function(class, limit)
-	--shared pooled storage
-	local _pool = {}
 	--size limit for tuning memory upper bound
 	local _pool_limit = limit or 128
+	--shared pooled storage
+	local _pool = table.new(_pool_limit, 0)
 
 	--flush the entire pool
 	function class:flush_pool()

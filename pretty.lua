@@ -50,9 +50,15 @@ function pretty._process(input, config, processing_state)
 	--if the input is not a table, or it has a tostring metamethod
 	--then we can just use tostring directly
 	local mt = getmetatable(input)
-	if type(input) ~= "table" or mt and mt.__tostring then
+	if type(input) ~= "table" then
 		local s = tostring(input)
 		--quote strings
+		if type(input) == "string" then
+			s = '"' .. s .. '"'
+		end
+		return s
+	elseif mt and mt.__tostring or type(input.__tostring) == "function" then
+		local s = input:__tostring()
 		if type(input) == "string" then
 			s = '"' .. s .. '"'
 		end

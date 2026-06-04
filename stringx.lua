@@ -309,4 +309,12 @@ function stringx.rpad(s, len, ch)
 	return s
 end
 
+function stringx.lpad(s, len, ch)
+	ch = ch or ' '
+	local d = len - #s
+	local padding = string.rep(ch, d)
+	s = padding .. s 
+	return s
+end
+
 return stringx

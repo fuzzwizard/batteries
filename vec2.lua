@@ -121,6 +121,10 @@ end
 --alias
 vec2.not_equals = vec2.nequals
 
+function vec2:is_non_zero()
+	return math.abs(self.x) > EQUALS_EPSILON or math.abs(self.y) > EQUALS_EPSILON
+end
+
 -----------------------------------------------------------
 --arithmetic
 -----------------------------------------------------------
