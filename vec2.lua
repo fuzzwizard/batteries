@@ -354,6 +354,39 @@ function vec2:round_inplace()
 end
 
 -----------------------------------------------------------
+-- hashing (courtesy of PrismRL)
+-----------------------------------------------------------
+
+--- @return number hash
+function vec2:hash()
+   return vec2.hash_xy(self.x, self.y)
+end
+
+--- @param x integer
+--- @param y integer
+function vec2.hash_xy(x, y)
+   -- Shift to handle negatives (assuming 26-bit signed integers)
+   x = x + 0x2000000        -- Shift range from [-2^25, 2^25-1] to [0, 2^26-1]
+   y = y + 0x2000000
+   return y * 0x4000000 + x -- Combine into a single number
+end
+
+function vec2.unhash(hash)
+   local x, y = vec2.unhash_xy(hash)
+   return vec2(x, y)
+end
+
+--- @param hash number
+function vec2.unhash_xy(hash)
+   local x = hash % 0x4000000
+   local y = math.floor(hash / 0x4000000)
+   -- Reverse the shift
+   x = x - 0x2000000
+   y = y - 0x2000000
+   return x, y
+end
+
+-----------------------------------------------------------
 -- interpolation
 -----------------------------------------------------------
 
