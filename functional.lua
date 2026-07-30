@@ -65,6 +65,8 @@ function functional.map(t, f)
 	return result
 end
 
+functional.filter_map = functional.map
+
 --maps a sequence inplace, modifying it {a, b, c} -> {f(a), f(b), f(c)}
 -- (automatically drops any nils, which can be used to simultaneously map and filter)
 function functional.map_inplace(t, f)
@@ -282,6 +284,7 @@ end
 
 --alias
 functional.map_stitch = functional.stitch
+functional.flat_map = functional.stitch
 
 --maps a sequence {a, b, c} -> { f(a, b), f(b, c), f(c, a) }
 -- useful for inter-dependent data

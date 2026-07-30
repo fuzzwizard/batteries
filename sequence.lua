@@ -11,7 +11,7 @@ local functional = require(path .. "functional")
 local stable_sort = require(path .. "sort").stable_sort
 
 --(not a class, because we want to be able to upgrade tables that are passed in without a copy)
-local sequence = {}
+local sequence = {type = 'sequence'}
 sequence.__index = sequence
 setmetatable(sequence, {
 	__index = table,
@@ -76,6 +76,7 @@ for _, v in ipairs({
 	"combine",
 	"stitch",
 	"map_stitch",
+	"flat_map",
 	"cycle",
 	"map_cycle",
 	"chain",
