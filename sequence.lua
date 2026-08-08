@@ -135,4 +135,8 @@ function sequence:unzip(f)
 	return sequence(a), sequence(b)
 end
 
+function sequence:generate(n, f)
+	return sequence(functional.generate(n, f))
+end
+
 return sequence
