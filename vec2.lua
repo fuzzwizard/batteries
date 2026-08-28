@@ -154,6 +154,12 @@ function vec2:vector_div_inplace(v)
 	return self
 end
 
+function vec2:vector_mod_inplace(v)
+	self.x = self.x % v.x
+	self.y = self.y % v.y
+	return self
+end
+
 --(a + (b * t))
 --useful for integrating physics and adding directional offsets
 function vec2:fused_multiply_add_inplace(v, t)
@@ -188,6 +194,13 @@ function vec2:scalar_div_inplace(x, y)
 	if not y then y = x end
 	self.x = self.x / x
 	self.y = self.y / y
+	return self
+end
+
+function vec2:scalar_mod_inplace(x, y)
+	if not y then y = x end
+	self.x = self.x % x
+	self.y = self.y % y
 	return self
 end
 
@@ -549,6 +562,7 @@ vec2.add_inplace = vec2.vector_add_inplace
 vec2.sub_inplace = vec2.vector_sub_inplace
 vec2.mul_inplace = vec2.vector_mul_inplace
 vec2.div_inplace = vec2.vector_div_inplace
+vec2.mod_inplace = vec2.vector_mod_inplace
 vec2.set = vec2.vector_set
 
 --american spelling alias
@@ -562,6 +576,7 @@ for _, inplace_name in ipairs({
 	"vector_sub_inplace",
 	"vector_mul_inplace",
 	"vector_div_inplace",
+	"vector_mod_inplace",
 	"fused_multiply_add_inplace",
 	"add_inplace",
 	"sub_inplace",
@@ -571,6 +586,7 @@ for _, inplace_name in ipairs({
 	"scalar_sub_inplace",
 	"scalar_mul_inplace",
 	"scalar_div_inplace",
+	"scalar_mod_inplace",
 	"normalise_both_inplace",
 	"normalise_inplace",
 	"normalise_len_inplace",
@@ -617,11 +633,13 @@ for _, v in ipairs({
 	{"ssub", "scalar_sub"},
 	{"smul", "scalar_mul"},
 	{"sdiv", "scalar_div"},
+	{"smod", "scalar_mod"},
 	{"vset", "vector_set"},
 	{"vadd", "vector_add"},
 	{"vsub", "vector_sub"},
 	{"vmul", "vector_mul"},
 	{"vdiv", "vector_div"},
+	{"vmod", "vector_mod"},
 	--(no plain addi etc, imo it's worth differentiating vaddi vs saddi)
 	{"fma", "fused_multiply_add"},
 	{"vproj", "vector_projection"},
