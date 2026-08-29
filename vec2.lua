@@ -538,6 +538,14 @@ function vec2.__div(a, b)
 	end
 end
 
+function vec2.__mod(a, b)
+	if type(b) == 'number' then
+		return a:scalar_mod(b)
+	else
+		return a:vector_mod(b)
+	end
+end
+
 -- mask out min component, with preference to keep x
 function vec2:major_inplace()
 	if self.x > self.y then
